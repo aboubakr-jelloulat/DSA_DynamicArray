@@ -8,66 +8,100 @@ class clsDynamicArray
 {
 
 protected:
-    int _Size {};
-   
+	int _Size{};
+	T *_TempArray;
+
 public:
-    T	*OriginalArray {nullptr};
+	T *OriginalArray{nullptr};
 
-    clsDynamicArray(int Size = 0)
-    {
-        if (Size < 0)
-            Size = 0;
+	clsDynamicArray(int Size = 0)
+	{
+		if (Size < 0)
+			Size = 0;
 
-        _Size = Size;
+		_Size = Size;
 
-        OriginalArray = new T[_Size];
-    }
+		OriginalArray = new T[_Size];
+	}
 
-    
+	bool SetItem(int index, T Value)
+	{
 
-    bool SetItem(int index, T Value)
-    {
+		if (index >= _Size || _Size < 0)
+			return false;
 
-        if (index >= _Size || _Size <0)
-            return false;
-		
 		// also you can use  assert func
-		//assert (0 <= index && index < _Size)
+		// assert (0 <= index && index < _Size)
 
-        OriginalArray[index] = Value;
-        return true;
+		OriginalArray[index] = Value;
+		return true;
+	}
 
-    }
+	int Size()
+	{
+		return _Size;
+	}
 
+	bool IsEmpty()
+	{
+		return (_Size == 0 ? true : false);
+	}
 
-    int Size()
-    {
-        return _Size;
-    }
+	void PrintList()
+	{
 
-    bool IsEmpty()
-    {
-        return (_Size == 0 ? true : false);
-    }
+		for (int i = 0; i <= _Size - 1; i++)
+		{
+			cout << OriginalArray[i] << " ";
+		}
 
-    void PrintList()
-    {
+		cout << "\n";
+	}
 
-        for (int i = 0; i <= _Size - 1; i++)
-        {
-            cout << OriginalArray[i] << " ";
-        }
+	/*
 
-        cout << "\n";
+	void Resize(int New_size)
+	{
+		T *new_array  = new T[New_size];
 
-    }
+		for (int i = 0; i < New_size; i++)
+			new_array[i] = OriginalArray[i];
 
+		swap(OriginalArray, new_array);
+		delete[] new_array;
+		_Size = New_size;
+	}
+
+	*/
+
+	void Resize(int NewSize)
+	{
+		if (NewSize < 0)
+		{
+			NewSize = 0;
+		}
+
+		_TempArray = new T[NewSize];
+
+		// limit the original size (5) to the new size(2) if it is less. 
+		if (NewSize < _Size)
+			_Size = NewSize;
+
+		// copy all data from original array until the size
+		for (int i = 0; i < _Size; i++)
+		{
+			_TempArray[i] = OriginalArray[i];
+		}
+
+		_Size = NewSize;
+
+		delete[] OriginalArray;
+		OriginalArray = _TempArray;
+	}
 
 	~clsDynamicArray()
-    {
-        delete[]  OriginalArray;
+	{
+		delete[] OriginalArray;
 		OriginalArray = nullptr; // no leaks
-
-    }
-
+	}
 };
