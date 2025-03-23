@@ -99,6 +99,41 @@ public:
 		OriginalArray = _TempArray;
 	}
 
+	 T GetItem(int index)
+    {
+        return OriginalArray[index];
+
+    }
+
+
+    void  Reverse()
+    {
+
+        _TempArray = new T[_Size];
+
+
+
+        for (int i = _Size - 1, u = 0; i >= 0; i--, u++)
+        {
+			
+            _TempArray[u] = OriginalArray[i];
+
+        }
+
+        delete[] OriginalArray;
+        OriginalArray = _TempArray;
+
+    }
+
+    void Clear()
+    {
+        _Size = 0;
+        _TempArray = new T[0];
+        delete[] OriginalArray;
+        OriginalArray = _TempArray;
+    }
+
+
 	~clsDynamicArray()
 	{
 		delete[] OriginalArray;

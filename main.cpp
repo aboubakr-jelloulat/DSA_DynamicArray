@@ -20,18 +20,20 @@ int main()
 
     MyDynamicArray.PrintList();
 
+    cout << "\nItem(2): " << MyDynamicArray.GetItem(2) << "\n";
 
-    MyDynamicArray.Resize(-2);
-    cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
-    cout << "\nArray Items after resize to 2 : \n";
+
+    MyDynamicArray.Reverse();
+
+    cout << "\nArray Items after reverse: \n";
     MyDynamicArray.PrintList();
 
+    MyDynamicArray.Clear();
 
-
-    MyDynamicArray.Resize(10);
-    cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
-    cout << "\nArray Items after resize to 10 : \n";
+    cout << "\nArray Items after clear: \n";
     MyDynamicArray.PrintList();
+
+    
 
 
 }
