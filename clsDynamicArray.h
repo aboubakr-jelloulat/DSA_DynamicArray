@@ -176,6 +176,38 @@ public:
 		return true;
 	}
 
+	bool InsertAt(T index, T value) {
+
+        if (index > _Size || index < 0)
+        {
+            return false;
+        }
+
+        _Size++;
+
+        _TempArray = new T[_Size];
+
+        //copy all before index
+        for (int i = 0; i < index; i++)
+        {
+            _TempArray[i] = OriginalArray[i];
+        }
+
+        _TempArray[index] = value;
+
+        //copy all after index
+        for (int i = index; i < _Size - 1; i++)
+        {
+            _TempArray[i + 1] = OriginalArray[i];
+        }
+
+        delete[] OriginalArray;
+        OriginalArray = _TempArray;
+        return true;
+
+    }
+
+
 
 	~clsDynamicArray()
 	{

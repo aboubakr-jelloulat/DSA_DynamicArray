@@ -20,18 +20,9 @@ int main()
 
     MyDynamicArray.PrintList();
 
-    int Index = MyDynamicArray.Find(30);
-    if (Index ==-1)
-        cout << "\nItem was not Found :-(\n ";
-    else
-        cout << "\n30 is found at index : " << Index;
-
-    MyDynamicArray.DeleteItem(30);
-    cout << "\n\nArray Items after deleting 30:";
+    MyDynamicArray.InsertAt(2,500);
+    cout << "\n\nArray after insert 500 at index 2:";
     cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
     MyDynamicArray.PrintList();
-
-
-
 
 }
