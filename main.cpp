@@ -8,11 +8,11 @@ int main()
 
     clsDynamicArray <int> MyDynamicArray(5);
 
-    MyDynamicArray.SetItem(0,10);
+    MyDynamicArray.SetItem(0, 1337);
     MyDynamicArray.SetItem(1, 20);
     MyDynamicArray.SetItem(2, 30);
     MyDynamicArray.SetItem(3, 40);
-    MyDynamicArray.SetItem(4, 50);
+    MyDynamicArray.SetItem(4, 42);
 
     cout << "\nIs Empty?  " << MyDynamicArray.IsEmpty() ;
     cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
@@ -30,6 +30,5 @@ int main()
     cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
     MyDynamicArray.PrintList();
 
-    system("pause>0");
 
 }
