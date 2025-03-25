@@ -83,7 +83,7 @@ public:
 
 		_TempArray = new T[NewSize];
 
-		// limit the original size (5) to the new size(2) if it is less. 
+		// limit the original size (5) to the new size(2) if it is less.
 		if (NewSize < _Size)
 			_Size = NewSize;
 
@@ -115,7 +115,7 @@ public:
 
         for (int i = _Size - 1, u = 0; i >= 0; i--, u++)
         {
-			
+
             _TempArray[u] = OriginalArray[i];
 
         }
@@ -132,6 +132,19 @@ public:
         delete[] OriginalArray;
         OriginalArray = _TempArray;
     }
+
+	void DeleteItemAt(int index)
+	{
+		assert (index >= 0 && index < _Size);
+
+		for (int i = index + 1; i < _Size; i++)
+		{
+			OriginalArray[i - 1] = OriginalArray[i];
+		}
+
+		-- _Size;
+		Resize(_Size);
+	}
 
 
 	~clsDynamicArray()
