@@ -156,6 +156,26 @@ public:
 		DeleteItemAt(_Size - 1);
 	}
 
+	int	Find(T Content)
+	{
+		for (int i = 0; i < _Size; i++)
+		{
+			if (OriginalArray[i] == Content)
+				return i;
+		}
+		return -1;
+	}
+
+	bool DeleteItem(T Content)
+	{
+		int index = Find(Content);
+		if (index == -1)
+			return false;
+
+		DeleteItemAt(index);
+		return true;
+	}
+
 
 	~clsDynamicArray()
 	{
